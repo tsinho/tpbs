@@ -27,9 +27,8 @@
 ## 安装指南
 
 1. 将项目部署到PHP环境（Apache/Nginx）
-2. 导入`database.sql`到MySQL
-3. 配置`/config/database.php`
-4. 设置服务器伪静态规则（如需）
+2. 导入`tpbs.sql`到MySQL数据库
+3. 配置`/config/database.php`数据库信息
 
 ## 安全说明
 
