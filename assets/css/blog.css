@@ -1,0 +1,162 @@
+/* 博客文章基础样式 */
+.blog-article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 标题样式 */
+.article-title {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.article-subtitle {
+    font-size: 1.8rem;
+    color: #3498db;
+    margin: 1.5rem 0 1rem;
+}
+
+.article-section {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin: 1.2rem 0 0.8rem;
+}
+
+/* 文本样式 */
+.article-text {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    color: #333;
+}
+
+.article-highlight {
+    background-color: #fff8e1;
+    padding: 1rem;
+    border-left: 4px solid #f39c12;
+    margin: 1.2rem 0;
+}
+
+.article-quote {
+    font-style: italic;
+    color: #7f8c8d;
+    padding: 0 1.5rem;
+    border-left: 3px solid #bdc3c7;
+    margin: 1.2rem 0;
+}
+
+/* 列表样式 */
+.article-list {
+    margin: 1.2rem 0;
+    padding-left: 2rem;
+}
+
+.article-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* 链接样式 */
+.article-link {
+    color: #3498db;
+    text-decoration: none;
+    border-bottom: 1px dashed #3498db;
+    transition: color 0.2s;
+}
+
+.article-link:hover {
+    color: #2980b9;
+    border-bottom-style: solid;
+}
+
+/* 图片样式 */
+.article-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 4px;
+}
+
+.article-figure {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.article-caption {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* 多媒体容器 */
+.article-video, .article-audio {
+    margin: 1.5rem 0;
+}
+
+.article-video video, .article-audio audio {
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* 表格样式 */
+.article-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+.article-table th, .article-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.article-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.article-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* 代码样式 */
+.article-code {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.article-code code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .blog-article {
+        padding: 1rem;
+    }
+    
+    .article-title {
+        font-size: 1.8rem;
+    }
+    
+    .article-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .article-section {
+        font-size: 1.2rem;
+    }
+}
