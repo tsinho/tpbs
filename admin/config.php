@@ -8,11 +8,11 @@
  
 include 'head.php';
 
-
 $result = $conn->query("SELECT * FROM config WHERE id=1");
 $config = $result->fetch_assoc();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// 处理系统配置更新
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['change_password'])) {
     $name = $conn->real_escape_string($_POST['name']);
     $qq = $conn->real_escape_string($_POST['qq']);
     $wechat = $conn->real_escape_string($_POST['wechat']);
@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
+// 处理密码修改
 if (isset($_POST['change_password'])) {
     $old_password = $_POST['old_password'];
     $new_password = $_POST['new_password'];
@@ -59,6 +60,7 @@ if (isset($_POST['change_password'])) {
             $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
             $conn->query("UPDATE config SET password = '$hashed_password' WHERE id=1");
             $password_success = "密码修改成功";
+            header('location: logout.php');
         } else {
             $password_error = "两次输入的新密码不一致";
         }
@@ -78,6 +80,13 @@ if (isset($_POST['change_password'])) {
             <?php if (isset($error)): ?>
             <div class="alert alert-danger"><?php echo $error; ?></div>
             <?php endif; ?>
+            <?php if (isset($password_success)): ?>
+                        <div class="alert alert-success"><?php echo $password_success; ?></div>
+                        <?php endif; ?>
+                        
+                        <?php if (isset($password_error)): ?>
+                        <div class="alert alert-danger"><?php echo $password_error; ?></div>
+                        <?php endif; ?>
             
             <form method="POST">
                 <div class="card">
@@ -225,13 +234,7 @@ if (isset($_POST['change_password'])) {
                         <h2>修改密码</h2>
                     </div>
                     <div class="card-body">
-                        <?php if (isset($password_success)): ?>
-                        <div class="alert alert-success"><?php echo $password_success; ?></div>
-                        <?php endif; ?>
                         
-                        <?php if (isset($password_error)): ?>
-                        <div class="alert alert-danger"><?php echo $password_error; ?></div>
-                        <?php endif; ?>
                         
                         <div class="row">
                             <div class="col-md-4">
