@@ -1,37 +1,41 @@
-# 青和个人主页博客系统 (TPBS)
+# TPBS (Tsinho Personal Blog System) 青和个人博客系统
 
-`Tsinho Personal Blog System` 是一个简约的个人主页/博客系统，支持文章发布、捐赠功能和访客留言。
+![Version](https://img.shields.io/badge/Version-1.0-blue) 
+![License](https://img.shields.io/badge/License-MIT-green)
+![PHP](https://img.shields.io/badge/PHP-7.0+-purple)
+![MySQL](https://img.shields.io/badge/MySQL-5.6+-blue)
 
-## 系统特性
+TPBS（青和个人博客系统）是一个轻量级个人博客系统，采用PHP+MySQL开发，适合快速搭建个人博客网站。
 
-- 🌐 **双模式系统**：既可作个人主页展示，也可作为博客/日记系统
-- 💰 **捐赠功能**：支持自定义收款码（微信/支付宝）
-- 📝 **留言板**：访客互动交流
-- 🎨 **简约UI**：商务蓝配色方案，响应式设计
-- 🔒 **安全设计**：
-  - 后台密码采用bcrypt加密
-  - 模块访问权限控制
-- 📦 **轻量架构**：
-  - 前端：HTML5/CSS3/JavaScript
-  - 后端：PHP+MySQL
+## 📦 安装部署
 
-## 技术栈
+### 环境要求
+- PHP 7.0+
+- MySQL 5.6+
+- Apache/Nginx
 
-| 模块       | 技术                |
-|------------|--------------------|
-| 前端       | HTML5, CSS3, JavaScript |
-| 后端       | PHP 7.0+           |
-| 数据库     | MySQL 5.6+         |
-| 加密       | bcrypt             |
+### 安装步骤
+1. 下载源码压缩包并上传至网站根目录
+2. 解压源码包
+3. 导入数据库文件（`tpbs.sql`）到MySQL
+4. 配置数据库连接（编辑`/config/database.php`）
+5. 安装完成！
 
-## 安装指南
+## 🔑 后台管理
+- 访问地址：`你的域名/admin`
+- 默认账号：`admin`
+- 默认密码：`123456`（请及时修改）
 
-1. 将项目部署到PHP环境（Apache/Nginx）
-2. 导入`tpbs.sql`到MySQL数据库
-3. 配置`/config/database.php`数据库信息
+## ⚙️ 配置文件
+主要配置文件位于：
+- `/config/database.php` - 数据库配置
 
-## 安全说明
+## 📝 使用说明
+1. 本系统为开源项目，允许二次开发
+2. 二次修改需保留原作者信息
+3. 禁止用于商业倒卖
+4. 系统可能存在安全漏洞，使用需谨慎
 
-❗ 二改源代码时，涉及引用数据库配置文件以及根目录/includes/目录下所有文件时需要加入以下代码定义环境为处于软件程序内：
-```php
-defined('IN_APP');
+## 🛠️ 二次开发说明
+①源码内的数据库配置文件（根目录/config/database.php）与根目录/includes/目录下所有文件均添加了访问限制，如在二改过程中需引用这些模块文件需在代码中加入define('IN_APP', true);定义当前处于应用内环境。
+②后台管理员账户密码使用bcrypt加密方式加密。
