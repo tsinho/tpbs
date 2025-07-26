@@ -39,7 +39,6 @@ $result = $conn->query("SELECT * FROM message ORDER BY id DESC");
                 </div>
                 <div class="card-body">
                     <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
-                        <form id="messageListForm">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -82,7 +81,6 @@ $result = $conn->query("SELECT * FROM message ORDER BY id DESC");
                                 <?php endwhile; ?>
                             </tbody>
                         </table>
-                        </form>
                     </div>
                 </div>
             </div>
