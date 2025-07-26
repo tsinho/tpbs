@@ -1,7 +1,7 @@
 # TPBS (Tsinho Personal Blog System) 青和个人博客系统
 
 ![Version](https://img.shields.io/badge/Version-1.0-blue) 
-![License](https://img.shields.io/badge/License-MIT-green)
+![License](https://img.shields.io/badge/License-GPLv3.0-green)
 ![PHP](https://img.shields.io/badge/PHP-7.0+-purple)
 ![MySQL](https://img.shields.io/badge/MySQL-5.6+-blue)
 
