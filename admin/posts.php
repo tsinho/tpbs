@@ -14,6 +14,13 @@ if (isset($_POST['delete_post'])) {
     $conn->query("DELETE FROM posts WHERE id=$id");
 }
 
+// 批量删除
+if (isset($_POST['bulk_delete']) && isset($_POST['post_ids'])) {
+    $ids = implode(',', array_map('intval', $_POST['post_ids']));
+    $conn->query("DELETE FROM posts WHERE id IN ($ids)");
+    echo "<script>alert('已删除选中的留言');</script>";
+}
+
 // 获取文章数据
 $result = $conn->query("SELECT * FROM posts ORDER BY id DESC");
 ?>
@@ -25,6 +32,10 @@ $result = $conn->query("SELECT * FROM posts ORDER BY id DESC");
             <div class="card">
                 <div class="card-header">
                     <h2>文章列表</h2>
+                    <form method="POST" class="bulk-form" id="bulkDeleteForm">
+                        <input type="hidden" name="bulk_delete" value="1">
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> 批量删除</button>
+                    </form>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
@@ -46,7 +57,7 @@ $result = $conn->query("SELECT * FROM posts ORDER BY id DESC");
                                 <?php while ($row = $result->fetch_assoc()): ?>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" class="post-checkbox">
+                                        <input type="checkbox" name="post_ids[]" value="<?php echo $row['id']; ?>" class="post-checkbox">
                                     </td>
                                     <td><?php echo $row['id']; ?></td>
                                     <td>
@@ -84,7 +95,56 @@ $result = $conn->query("SELECT * FROM posts ORDER BY id DESC");
                     
                 </div>
             </div>
-            
+            <script>
+                // 全选功能
+                document.getElementById('selectAll').addEventListener('change', function() {
+                    const checkboxes = document.querySelectorAll('.post-checkbox');
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = this.checked;
+                    });
+                });
+                
+                
+                // 批量删除表单提交
+                document.getElementById('bulkDeleteForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // 收集选中的文章ID
+                    const checkedBoxes = document.querySelectorAll('.post-checkbox:checked');
+                    if (checkedBoxes.length === 0) {
+                        alert('请至少选择一条留言');
+                        return;
+                    }
+                    
+                    // 创建隐藏表单提交
+                    const formData = new FormData();
+                    formData.append('bulk_delete', '1');
+                    
+                    checkedBoxes.forEach(checkbox => {
+                        formData.append('post_ids[]', checkbox.value);
+                    });
+                    
+                    // 确认对话框
+                    if (confirm('确定要删除选中的 ' + checkedBoxes.length + ' 篇文章吗？')) {
+                        fetch(window.location.href, {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                alert('删除成功');
+                                window.location.reload();
+                            } else {
+                                alert('删除失败');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('删除过程中出现错误');
+                        });
+                    }
+                });
+            </script>
             <style>
                 .table {
                     width: 100%;
