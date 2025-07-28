@@ -48,7 +48,7 @@ function formatViewCount($count) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人主页 - 文章详情</title>
+    <title><?php echo $title;?> - 文章详情</title>
     <script src="https://cdn.tailwindcss.com/3.3.3"></script>
     <link rel="stylesheet" href="../../assets/css/fontawesome/css/all.min.css">
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/icon.php';?>
