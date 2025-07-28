@@ -59,7 +59,7 @@ if ($result) {
                             <h4 class="font-semibold">' . $name . '</h4>
                             <span class="text-sm text-gray-500">' . $time . '</span>
                         </div>
-                        <p style="font-family: \'dingliezhuhaifont\',Sans-Serif" class="text-gray-700 mb-3">' . $content . '</p>
+                        <p style="font-family: \'dingliezhuhaifont\',Sans-Serif;max-width: 20.5ch;overflow-wrap: break-word" class="text-gray-700 mb-3">' . $content . '</p>
                     </div>
                 </div>
             </div>';
